@@ -1,10 +1,9 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: django
 spec:
-  serviceName: django-container-headless
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: django-container
@@ -15,7 +14,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: harmansethi92/todolist:0.3
+          image: harmansethi92/todolist:0.6
           ports:
             - containerPort: 8000
           env:
@@ -30,21 +29,13 @@ spec:
                 secretKeyRef:
                   name: postgres-credentials
                   key: password
+
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
                   key: db_name
 
-
             - name: POSTGRES_HOST
-              value: my-release-postgresql-headless
+              value: postgres
 
-          volumeMounts:
-            - name: postgres-volume-mount
-              mountPath: /var/lib/busybox
-
-      volumes:
-        - name: postgres-volume-mount
-          persistentVolumeClaim:
-            claimName: postgres-pvc3
