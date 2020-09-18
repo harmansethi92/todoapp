@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: harmansethi92/todolist:0.6
+          image: harmansethi92/todolist:1.0
           ports:
             - containerPort: 8000
           env:
