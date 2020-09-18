@@ -4,6 +4,11 @@
 
 ### You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
 
+
+### Architecture Diagram
+
+![alt text](https://github.com/[harmansethi92]/[todoapp]/blob/[master]/todoapp/todoapp.png?raw=true)
+
 ### django application
 1. It's written in python3 and dependencies are stored in the requirments.txt file
 2. todoapp directory has the settings and urls for the project
