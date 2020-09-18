@@ -117,6 +117,8 @@ $ kubectl exec <pod-name> -n todolist /bin/bash
 
 /usr/src/app# python3 manage.py migrate
 
+This step can also be done through a k8s Job service to run it.
+
 
 
 ## Testing
