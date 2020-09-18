@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-container
+  labels:
+    app: django-container
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: django-container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-container-headless
+  labels:
+    app: django-container-headless
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: django-container-headless
