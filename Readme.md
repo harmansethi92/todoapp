@@ -1,10 +1,12 @@
 ## Todoapp
 
-### The app has been written in django framework using python 3 and is deployed on K8s. The app uses a HA-postgres database with a main postgrea and a stanby replica.
+### Overview
 
-### You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
+The app has been written in django framework using python 3 and is deployed on K8s. The app uses a HA-postgres database with a main postgrea and a stanby replica.
 
-### django application
+You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(35.202.60.45), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
+
+#### django application
 1. It's written in python3 and dependencies are stored in the requirments.txt file
 2. todoapp directory has the settings and urls for the project
 3. todolist directory consists of the db models.py and the views.py which consists the main logic, admin.py and apps.py files.
@@ -13,7 +15,7 @@
 6. Dockerfile can be used to create the image of the app.
 7. docker-compose.yaml can be used to run the app locally
 
-### postgres
+#### postgres
 1. using the basic postgres image to build the app locally and on k8s using kubeDB postgres.
 2. All records are stored under the todolist_todolist table in postgres db
 
@@ -46,9 +48,10 @@ $ kubectl get secrets -n todolist ha-postgres-auth -o jsonpath='{.data.\POSTGRES
 This password is then stored in the secrets.yaml file for django application to pull the values from.
 
 
+
 ### Setup
 
-#### Local environment
+#### On Local environment
 
 1. You can clone the application using `git clone https://github.com/harmansethi92/todoapp.git`
 
@@ -65,8 +68,9 @@ $ python3 manage.py migrate
 $ docker-compose up --build
 
 
-#### K8s
-#### postgres:
+#### On K8s cluster
+
+##### postgres:
 1. $ curl -fsSL https://github.com/kubedb/installer/raw/v0.13.0-rc.0/deploy/kubedb.sh | bash
 
 2. setup postgres through the statefulset file. Run the command:
@@ -81,7 +85,7 @@ $ kubectl get secrets -n todolist ha-postgres-auth -o jsonpath='{.data.\POSTGRES
 
 Add the above credentials output to the secrets.yaml file base64 encoded for django application under k8s/django/secrets.yaml
 
-#### django
+##### django
 
 1. create the secrets using secrets.yaml file. You need to update the password from above, not versioning the password.
 
@@ -104,7 +108,9 @@ $ kubectl exec <pod-name> -n todolist /bin/bash
 /usr/src/app# python3 manage.py migrate
 
 
+
 ### Testing
+
 1. Docker Image
 
 - We are using the image harmansethi92/todolist:1.0 which is a public repo setup on Dockerhub, you can use the repository to push more images with different tags.
