@@ -1,13 +1,13 @@
-## Todoapp
+# Todoapp
 
-### Overview
+## Overview
 
 The app has been written in django framework using python 3 and is deployed on K8s. The app uses a High availibility postgres database cluster with a main postgres and a standby replica.
 
 You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(35.202.60.45), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
 
 
-### Architecture Diagram
+## Architecture Diagram
 
 ![alt text](https://github.com/harmansethi92/todoapp/blob/master/todoapp/todoapp.png)
 
@@ -26,7 +26,7 @@ You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsn
 2. All records are stored under the todolist_todolist table in postgres db
 
 
-### Deployment
+## Deployment
 The deployment for the app is setup on kubernetes cluster (gorgias). It's a basic 3 node cluster with minimal resources.
 
 The k8s cluster has 2 main pieces and all pods, services, storage is setup under the todolist namespace on the k8s cluster.
@@ -55,9 +55,9 @@ This password is then stored in the secrets.yaml file for django application to 
 
 
 
-### Setup
+## Setup
 
-#### On Local environment
+### On Local environment
 
 1. You can clone the application using `git clone https://github.com/harmansethi92/todoapp.git`
 
@@ -74,7 +74,7 @@ $ python3 manage.py migrate
 $ docker-compose up --build
 
 
-#### On K8s cluster
+### On K8s cluster
 
 You can connect to the cluster using the google cloud shell on GKE console or the kube config file.
 
@@ -119,7 +119,7 @@ $ kubectl exec <pod-name> -n todolist /bin/bash
 
 
 
-### Testing
+## Testing
 
 1. Docker Image
 
@@ -150,7 +150,7 @@ postgres=# select * from pg_stat_replication;
 
 
 
-### Helpful Links
+## Helpful Links
 - [Documentaton KubeDB](https://kubedb.com/docs/0.11.0/guides/postgres/clustering/streaming_replication/)
 
 
