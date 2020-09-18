@@ -139,7 +139,7 @@ postgres=# select * from pg_stat_replication;
 
 6. You can use the rolling update k8s feature to deploy new code without any downtime. 
 
-
+7. There is also an option to setup the k8s deployment files using helm or Terraform, but I have just used simple way of deployment for this project. 
 
 
 
