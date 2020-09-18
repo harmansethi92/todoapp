@@ -125,7 +125,7 @@ This step can also be done through a k8s Job service to run it.
 
 1. Docker Image
 
-- We are using the image harmansethi92/todolist:1.0 which is a public repo setup on Dockerhub, you can use the repository to push more images with different tags.
+- We are using the image harmansethi92/todolist:1.1 which is a public repo setup on Dockerhub, you can use the repository to push more images with different tags.
 
 2. Automatic failover
  
