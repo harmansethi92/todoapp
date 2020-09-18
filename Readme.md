@@ -9,7 +9,6 @@ You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsn
 
 ### Architecture Diagram
 
-![alt text](https://github.com/harmansethi92/todoapp/blob/master/todoapp/todoapp.png)
 
 ### django application
 1. It's written in python3 and dependencies are stored in the requirments.txt file
