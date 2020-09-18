@@ -6,7 +6,12 @@ The app has been written in django framework using python 3 and is deployed on K
 
 You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(35.202.60.45), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
 
-#### django application
+
+### Architecture Diagram
+
+![alt text](https://github.com/[harmansethi92]/[todoapp]/blob/[master]/todoapp/todoapp.png?raw=true)
+
+### django application
 1. It's written in python3 and dependencies are stored in the requirments.txt file
 2. todoapp directory has the settings and urls for the project
 3. todolist directory consists of the db models.py and the views.py which consists the main logic, admin.py and apps.py files.
