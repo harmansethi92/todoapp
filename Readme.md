@@ -151,7 +151,8 @@ postgres=# select * from pg_stat_replication;
 
 
 ### Helpful Links
-- [Documentaton](https://kubedb.com/docs/0.11.0/guides/postgres/clustering/streaming_replication/)
+- [Documentaton KubeDB](https://kubedb.com/docs/0.11.0/guides/postgres/clustering/streaming_replication/)
+
 
 
 
