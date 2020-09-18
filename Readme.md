@@ -1,8 +1,10 @@
 ## Todoapp
 
-### The app has been written in django framework using python 3 and is deployed on K8s. The app uses a HA-postgres database with a main postgrea and a stanby replica.
+#### Overview
 
-### You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
+The app has been written in django framework using python 3 and is deployed on K8s. The app uses a HA-postgres database with a main postgrea and a stanby replica.
+
+You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(35.202.60.45), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
 
 ### django application
 1. It's written in python3 and dependencies are stored in the requirments.txt file
