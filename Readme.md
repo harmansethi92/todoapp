@@ -78,7 +78,7 @@ $ docker-compose up --build
 
 You can connect to the cluster using the google cloud shell on GKE console or the kube config file.
 
-##### postgres:
+#### postgres:
 1. Setup the kubeDB operator on the k8s cluster.
 
 $ curl -fsSL https://github.com/kubedb/installer/raw/v0.13.0-rc.0/deploy/kubedb.sh | bash
@@ -95,7 +95,7 @@ $ kubectl get secrets -n todolist ha-postgres-auth -o jsonpath='{.data.\POSTGRES
 
 Add the above credentials output to the secrets.yaml file base64 encoded for django application under k8s/django/secrets.yaml
 
-##### django
+#### django
 
 1. create the secrets using secrets.yaml file. You need to update the password from above, not versioning the password for enhanced security
 
