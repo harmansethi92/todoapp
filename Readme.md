@@ -2,7 +2,7 @@
 
 ### Overview
 
-The app has been written in django framework using python 3 and is deployed on K8s. The app uses a HA-postgres database with a main postgrea and a stanby replica.
+The app has been written in django framework using python 3 and is deployed on K8s. The app uses a High availibility postgres database cluster with a main postgres and a standby replica.
 
 You can go to the app using the URL: `todoapp.devopsnote.com` (I own the devopsnote.com domain and it points to the loadbalancer service on K8s cluster). You can also use the load balancer IP address(35.202.60.45), but then you have to whitelist the IP address under allowed hosts settings in file todoapp/settings.py
 
@@ -70,8 +70,12 @@ $ docker-compose up --build
 
 #### On K8s cluster
 
+You can connect to the cluster using the google cloud shell on GKE console or the kube config file.
+
 ##### postgres:
-1. $ curl -fsSL https://github.com/kubedb/installer/raw/v0.13.0-rc.0/deploy/kubedb.sh | bash
+1. Setup the kubeDB operator on the k8s cluster.
+
+$ curl -fsSL https://github.com/kubedb/installer/raw/v0.13.0-rc.0/deploy/kubedb.sh | bash
 
 2. setup postgres through the statefulset file. Run the command:
 
@@ -87,7 +91,7 @@ Add the above credentials output to the secrets.yaml file base64 encoded for dja
 
 ##### django
 
-1. create the secrets using secrets.yaml file. You need to update the password from above, not versioning the password.
+1. create the secrets using secrets.yaml file. You need to update the password from above, not versioning the password for enhanced security
 
 $ kubectl apply -f k8s/django/secrets.yaml -n todolist
 
@@ -130,6 +134,10 @@ bash-4.3# psql -h 127.0.0.1 -U postgres -d postgres -p 5432
 postgres=# select * from pg_stat_replication;
 
 4. DEBUG=True for the django backend as of now. So anytime you hit an exception/error it would give you detailed info on the browser. 
+
+5. The django is setup as deployment and not a replication controller, so the pods are not self healing. 
+
+6. You can use the rolling update k8s feature to deploy new code without any downtime. 
 
 
 
