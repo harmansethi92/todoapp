@@ -52,10 +52,20 @@ This password is then stored in the secrets.yaml file for django application to 
 ### Setup
 
 #### On Local environment
-1. You can clone the application using git clone 
 
+1. You can clone the application using `git clone https://github.com/harmansethi92/todoapp.git`
 
+2. You can use the docker-compose file to setup the django application and postgres container. Use the command `docker-compose up`
 
+3. After the containers are setup, exec into the django container and run migration
+
+$ docker exec -it <name of container> /bin/bash
+
+$ python3 manage.py migrate
+
+4. After you make changes to your code you can run following commands to rebuild the app.
+
+$ docker-compose up --build
 
 
 #### On K8s cluster
